@@ -1,0 +1,53 @@
+{% extends 'hospital/base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <h1 class="mb-6 text-3xl">{{ title }}</h1>
+    <table class="table-auto">
+        <thead>
+            <tr class="bg-gray-800 text-white">
+                <th class="px-4 py-2">Action</th>
+                <th class="px-4 py-2">Observation</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for action in pastActions %}
+                <tr class="even:bg-gray-100 odd:bg-white">
+                    <td class="border px-4 py-2">{{ action.action }}</td>
+                    <td class="border px-4 py-2">{{ action.observation }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="mt-6">
+        <p class="text-lg px-4 py-1"> <b>Current Location:</b> {{ nextAction.current_location }}</p>
+        <p class="text-lg px-4 py-1"> <b>Current Observation:</b> {{ nextAction.observation }}</p>
+    </div>
+    
+    
+    <form id="getNextAction" action="." method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-4">
+            <label for="id_action" class="px-4 py-2 block text-gray-700 text-2xl font-bold mb-2">Next Action:</label>
+            <select name="action" id="id_action" class="px-4 py-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                {% for action in nextAction.action_space %}
+                    <option value="{{ action }}">{{ action }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="flex items-center justify-between">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline" type="submit">
+                Submit
+            </button>
+            <button 
+                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline" type="reset"
+                onclick="location.href='{% url 'reset' %}'"
+            >
+                Reset
+            </button>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>{% block title %}{% endblock %} | Environments</title>
+</head>
+<body>
+    <nav class="py-6 px-6 flex justify-between items-center border-b border-gray-300">
+        <a href="#" class="text-xl font-semibold">Environments</a>
+    </nav>
+        
+    <div class='px-6 py-6'>
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    
+
+    <footer class="bg-white rounded-lg shadow m-4 dark:bg-gray-800">
+        <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+            <span class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+                <a href="http://cse.iitkgp.ac.in/~subhajyoti.halder/" class="hover:underline me-4 md:me-6" target="_blank">Subhajyoti Halder</a>
+            </span>
+        </div>
+    </footer>
+</body>
+</html>

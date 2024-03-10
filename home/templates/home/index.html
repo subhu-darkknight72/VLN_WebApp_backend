@@ -1,0 +1,23 @@
+{% extends 'home/base.html' %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+    <h1>Environments</h1>
+
+        <table class="table-auto">
+            <thead>
+                <tr class="bg-gray-700 text-white">
+                    <th class="px-4 py-2">Environments</th>
+                    <th class="px-4 py-2">Path</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="even:bg-gray-100 odd:bg-white">
+                    <td class="border px-4 py-2">Hospital</td>
+                    <td class="border px-4 py-2"> <a href="{% url 'hospitalIndex' %}">/hospital</a> </td>
+                </tr>
+            </tbody>
+        </table>
+
+{% endblock %}
