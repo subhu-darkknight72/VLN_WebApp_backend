@@ -10,6 +10,6 @@ super:
 
 # command: make push m="commit message"
 push:
-	git add .
+	git add -A
 	git commit -m "$(m)"
 	git push origin master
