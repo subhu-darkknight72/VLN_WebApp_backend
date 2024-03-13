@@ -41,7 +41,7 @@ def performAction(request):
         form = performActionForm()
     return render(request, 'hospital/performAction.html', {
         'form': form,
-        'title': 'Perform Action',
+        'title': 'Actions',
         'pastActions': pastActions,
         'nextAction': nextAct,
     })

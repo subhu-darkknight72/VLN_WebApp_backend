@@ -1,23 +1,20 @@
 {% extends 'home/base.html' %}
 
-{% block title %}Welcome{% endblock %}
+{% block title %}Home{% endblock %}
 
 {% block content %}
-    <h1>Environments</h1>
-
-        <table class="table-auto">
-            <thead>
-                <tr class="bg-gray-700 text-white">
-                    <th class="px-4 py-2">Environments</th>
-                    <th class="px-4 py-2">Path</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="even:bg-gray-100 odd:bg-white">
-                    <td class="border px-4 py-2">Hospital</td>
-                    <td class="border px-4 py-2"> <a href="{% url 'hospitalIndex' %}">/hospital</a> </td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="flex items-center justify-center">
+        <div class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+            <a href="#" aria-current="true" class="block w-full px-4 py-2 text-black bg-white border-b border-gray-200 rounded-t-lg cursor-pointer dark:border-gray-600">
+                Choose one:
+            </a>
+            <a href="{% url 'hospitalIndex' %}" class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
+                Hospital
+            </a>
+            <a href="#" class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
+                Others
+            </a>
+        </div>
+    </div>
 
 {% endblock %}
