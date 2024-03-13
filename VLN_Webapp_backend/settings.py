@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import dj_database_url
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,12 +22,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-gkxzy#$+zo$5p9a4k05i5lrrqc%@+$_s&df0&p*2j)ide&8s8d'
+# SECRET_KEY = 'django-insecure-gkxzy#$+zo$5p9a4k05i5lrrqc%@+$_s&df0&p*2j)ide&8s8d'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(' ')
 
 
 # Application definition
@@ -83,7 +85,9 @@ DATABASES = {
     }
 }
 
-DATABASES['default'] = dj_database_url.parse("postgres://vlndb_user:QrjTGcwgah5QcN5s9aRNfzvMYoqT02Gy@dpg-cnl512la73kc73crbeu0-a.oregon-postgres.render.com/vlndb")
+# DATABASES['default'] = dj_database_url.parse("postgres://vlndb_user:QrjTGcwgah5QcN5s9aRNfzvMYoqT02Gy@dpg-cnl512la73kc73crbeu0-a.oregon-postgres.render.com/vlndb")
+database_url = os.environ.get('DATABASE_URL')
+DATABASES['default'] = dj_database_url.parse(database_url)
 
 
 # Password validation
