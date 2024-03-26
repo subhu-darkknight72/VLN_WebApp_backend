@@ -1,8 +1,23 @@
 {% extends 'hospital/base.html' %}
+{% load static %}
 
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    <h1>Hospital</h1>
-    <h3>Welcome to the hospital</h3>
+    <h1 class="flex justify-center mb-6 text-3xl">Welcome to the hospital</h1>
+    {% comment %} Align the div to the center of the page {% endcomment %}
+    <div class="flex justify-center">
+        <button 
+            class="bg-emerald-500 hover:bg-emerald-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline" type="reset"
+            onclick="location.href='{% url 'hospitalReset' %}'"
+        >
+            Enter the Hospital
+        </button>
+    </div>
+
+    <div class="flex justify-center mt-6">
+        {% comment %} Insert an image {% endcomment %}
+        
+        <img src="https://github.com/subhu-darkknight72/VLN_WebApp_backend/blob/main/static/hospital/hospitalImage.png?raw=true" alt="Hospital" class="w-1/2" />
+    </div>
 {% endblock %}
