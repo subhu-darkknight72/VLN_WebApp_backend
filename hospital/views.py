@@ -46,7 +46,7 @@ def performAction(request):
         'title': 'Actions',
         'pastActions': pastActions,
         'nextAction': nextAct,
-        'floorPlan': "hospital/sampleFloorPlan_2.png"
+        'floorPlan': "https://github.com/subhu-darkknight72/VLN_WebApp_backend/blob/main/static/hospital/sampleFloorPlan_2.png?raw=true"
     })
 
 def reset(request):
