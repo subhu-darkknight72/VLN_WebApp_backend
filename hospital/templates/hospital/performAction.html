@@ -1,25 +1,36 @@
 {% extends 'hospital/base.html' %}
+{% load static %}
 
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
     <h1 class="mb-6 text-3xl">{{ title }}</h1>
-    <table class="table-auto">
-        <thead>
-            <tr class="bg-gray-800 text-white">
-                <th class="px-4 py-2">Action</th>
-                <th class="px-4 py-2">Observation</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for action in pastActions %}
-                <tr class="even:bg-gray-100 odd:bg-white">
-                    <td class="border px-4 py-2">{{ action.action }}</td>
-                    <td class="border px-4 py-2">{{ action.observation }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="flex">
+        <div class="w-3/4 p-8">
+            <table class="table-auto">
+                <thead>
+                    <tr class="bg-gray-800 text-white">
+                        <th class="px-4 py-2">Action</th>
+                        <th class="px-4 py-2">Observation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for action in pastActions %}
+                        <tr class="even:bg-gray-100 odd:bg-white">
+                            <td class="border px-4 py-2">{{ action.action }}</td>
+                            <td class="border px-4 py-2">{{ action.observation }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="w-1/4 flex justify-center items-center">
+            <div class="w-full max-w-md p-8">
+                <img src="{% static floorPlan %}" alt="Floor Plan" class="w-full h-auto zoom-img transition-transform duration-500 ease-in-out hover:scale-[2.5]"  style="transform-origin: top right;">
+            </div>
+        </div>
+    </div>
+    
 
     <div class="mt-6">
         <p class="text-lg px-4 py-1"> <b>Current Location:</b> {{ nextAction.current_location }}</p>
@@ -31,6 +42,7 @@
         {% csrf_token %}
         <div class="mb-4">
             <label for="id_action" class="px-4 py-2 block text-gray-700 text-2xl font-bold mb-2">Next Action:</label>
+            <input type="text" class="px-4 py-2 shadow appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="searchAction" placeholder="Search...">
             <select name="action" id="id_action" class="px-4 py-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                 {% for action in nextAction.action_space %}
                     <option value="{{ action }}">{{ action }}</option>
@@ -50,4 +62,42 @@
             </button>
         </div>
     </form>
+    <script>
+        // Get the search input element
+        var input = document.getElementById("searchAction");
+
+        // Get the dropdown element
+        var select = document.getElementById("id_action");
+
+        // Add event listener for input change
+        input.addEventListener("input", function() {
+            // Get the search query
+            var query = input.value.toLowerCase();
+            var regex = new RegExp(query, 'i');
+            
+            // Get all options in the dropdown
+            var options = select.getElementsByTagName("option");
+        
+            // Loop through each option
+            for (var i = 0; i < options.length; i++) {
+                var option = options[i];
+                var text = option.text.toLowerCase();
+                // Check if the option's text matches the search query using regex
+                if (text=="-" || text.includes(query) || query === '') {
+                    // If it does, show the option
+                    console.log(text, "searching for", query);
+                    option.removeAttribute('hidden')
+                } else {
+                    // Otherwise, hide the option
+                    option.setAttribute('hidden', 'hidden');
+                }
+            }
+
+            // Set the default option to the first visible option
+            var defaultOption = select.querySelector('option:not([hidden])');
+            if (defaultOption) {
+                defaultOption.selected = true;
+            }
+        });
+    </script>
 {% endblock %}

@@ -23,16 +23,18 @@ def performAction(request):
 
     game = Game()
     nextAct = game.start(cmds)
+    nextAct['action_space'].append("-")
 
     if request.method == 'POST':
         form = performActionForm(request.POST)
         if form.is_valid():
             res = form.save(commit=False)
-            
-            cmds.append(res.action)
-            game = Game()
-            nextAct = game.start(cmds)
-            actionHistory.objects.create(action=res.action, observation=nextAct['observation'])
+            if(res.action != "-"):
+                cmds.append(res.action)
+                game = Game()
+                nextAct = game.start(cmds)
+                nextAct['action_space'].append("-")
+                actionHistory.objects.create(action=res.action, observation=nextAct['observation'])
 
             return redirect('performAction')
         else:
@@ -44,6 +46,7 @@ def performAction(request):
         'title': 'Actions',
         'pastActions': pastActions,
         'nextAction': nextAct,
+        'floorPlan': "hospital/sampleFloorPlan_2.png"
     })
 
 def reset(request):
