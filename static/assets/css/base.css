@@ -1,0 +1,99 @@
+/* Navigation */
+.navbar {
+    padding-top: 1.5rem;
+    padding-right: 1.5rem;
+    padding-bottom: 1.5rem;
+    padding-left: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom-width: 1px;
+    border-color: #D1D5DB;
+}
+
+.navbar a {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.navbar a:hover {
+    color: #6B7280;
+}
+
+.navbar-links {
+    margin-right: 1.5rem;
+}
+
+.navbar-links a {
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.navbar-links a:hover {
+    color: #6B7280;
+}
+
+/* Content */
+.content {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+/* Footer */
+    /* <footer class="bg-white rounded-lg shadow m-4 dark:bg-gray-800">
+        <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+            <span class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+                <a href="http://cse.iitkgp.ac.in/~subhajyoti.halder/" class="hover:underline me-4 md:me-6" target="_blank">Subhajyoti Halder</a>
+            </span>
+        </div>
+    </footer> */
+.footer {
+    /* rgb(31 41 55) */
+    background-color: #1F2937;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    margin-top: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding-top: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+
+    color: #1F2937;
+}
+
+.footer-content {
+    max-width: 96rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-link {
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #6B7280;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
+

@@ -16,3 +16,6 @@ push:
 
 req:
 	pip freeze > requirements.txt
+
+static:
+	python manage.py collectstatic
